@@ -1,5 +1,6 @@
 package com.github.rustam26.telegrambot;
 
+import com.github.rustam26.telegrambot.bot.TelegramBot;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
