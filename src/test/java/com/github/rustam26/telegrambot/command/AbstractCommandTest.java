@@ -15,7 +15,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
  * Abstract class for testing {@link Command}s.
  */
 
-public abstract class AbstractCommandTest {
+ abstract class AbstractCommandTest {
 
     protected TelegramBot telegramBot = Mockito.mock(TelegramBot.class);
     protected SendBotMessageService sendBotMessageService = new SendBotMessageServiceImpl(telegramBot);
@@ -28,12 +28,13 @@ public abstract class AbstractCommandTest {
 
     @Test
     public void shouldProperlyExecuteCommand() throws TelegramApiException{
-        Long chatId = 1234567892549L;
+        Long chatId = 1234567824356L;
 
         Update update = new Update();
         Message message = Mockito.mock(Message.class);
         Mockito.when(message.getChatId()).thenReturn(chatId);
         Mockito.when(message.getText()).thenReturn(getCommandName());
+        update.setMessage(message);
 
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(chatId.toString());
