@@ -1,15 +1,13 @@
-package com.github.rustam26.telegrambot;
+package com.github.rustam26.telegrambot.command;
 
 
-import com.github.rustam26.telegrambot.command.Command;
-import com.github.rustam26.telegrambot.command.HelpCommand;
 import org.junit.jupiter.api.DisplayName;
 
 import static com.github.rustam26.telegrambot.command.CommandName.HELP;
 import static com.github.rustam26.telegrambot.command.HelpCommand.HELP_MESSAGE;
 
 @DisplayName("Unit-level testing for HelpCommand")
-public class HelpCommandTest extends AbstractCommandTest{
+public class HelpCommandTest extends AbstractCommandTest {
     @Override
     String getCommandName() {
         return HELP.getCommandName();

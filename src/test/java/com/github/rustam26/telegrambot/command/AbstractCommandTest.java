@@ -1,7 +1,6 @@
-package com.github.rustam26.telegrambot;
+package com.github.rustam26.telegrambot.command;
 
 import com.github.rustam26.telegrambot.bot.TelegramBot;
-import com.github.rustam26.telegrambot.command.Command;
 import com.github.rustam26.telegrambot.service.SendBotMessageService;
 import com.github.rustam26.telegrambot.service.SendBotMessageServiceImpl;
 import org.junit.jupiter.api.Test;
@@ -10,6 +9,7 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+
 
 /**
  * Abstract class for testing {@link Command}s.

@@ -1,15 +1,13 @@
-package com.github.rustam26.telegrambot;
+package com.github.rustam26.telegrambot.command;
 
 
-import com.github.rustam26.telegrambot.command.Command;
-import com.github.rustam26.telegrambot.command.StopCommand;
 import org.junit.jupiter.api.DisplayName;
 
 import static com.github.rustam26.telegrambot.command.CommandName.STOP;
 import static com.github.rustam26.telegrambot.command.StopCommand.STOP_MESSAGE;
 
 @DisplayName("Unit-level testing for StopCommand")
-public class StopCommandTest extends AbstractCommandTest{
+public class StopCommandTest extends AbstractCommandTest {
 
     @Override
     String getCommandName() {

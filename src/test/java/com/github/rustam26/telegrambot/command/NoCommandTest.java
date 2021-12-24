@@ -1,7 +1,6 @@
-package com.github.rustam26.telegrambot;
+package com.github.rustam26.telegrambot.command;
 
-import com.github.rustam26.telegrambot.command.Command;
-import com.github.rustam26.telegrambot.command.NoCommand;
+
 import org.junit.jupiter.api.DisplayName;
 
 import static com.github.rustam26.telegrambot.command.CommandName.NO;
