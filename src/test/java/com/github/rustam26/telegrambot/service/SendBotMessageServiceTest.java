@@ -1,4 +1,4 @@
-package com.github.rustam26.telegrambot;
+package com.github.rustam26.telegrambot.service;
 
 import com.github.rustam26.telegrambot.bot.TelegramBot;
 import com.github.rustam26.telegrambot.service.SendBotMessageService;

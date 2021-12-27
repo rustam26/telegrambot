@@ -3,6 +3,7 @@ package com.github.rustam26.telegrambot.command;
 import com.github.rustam26.telegrambot.bot.TelegramBot;
 import com.github.rustam26.telegrambot.service.SendBotMessageService;
 import com.github.rustam26.telegrambot.service.SendBotMessageServiceImpl;
+import com.github.rustam26.telegrambot.service.TelegramUserService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -19,6 +20,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
     protected TelegramBot telegramBot = Mockito.mock(TelegramBot.class);
     protected SendBotMessageService sendBotMessageService = new SendBotMessageServiceImpl(telegramBot);
+    protected TelegramUserService telegramUserService = Mockito.mock(TelegramUserService.class);
 
     abstract String getCommandName();
 
