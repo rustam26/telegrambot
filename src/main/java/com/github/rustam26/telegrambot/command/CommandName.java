@@ -13,6 +13,7 @@ public enum CommandName {
     ADD_GROUP_SUB("/addgroupsub"),
     LIST_GROUP_SUB("/listgroupsub");
 
+
     private final String commandName;
 
     CommandName(String commandName) {
