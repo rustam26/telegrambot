@@ -31,7 +31,6 @@ public class TelegramBot extends TelegramLongPollingBot {
     public TelegramBot(TelegramUserService telegramUserService, JavaRushGroupClient javaRushGroupClient, GroupSubService groupSubService) {
         this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this), telegramUserService,javaRushGroupClient,groupSubService);
 
-   
     }
 
     @Override

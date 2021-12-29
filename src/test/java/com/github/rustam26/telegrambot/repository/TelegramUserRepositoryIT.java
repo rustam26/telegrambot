@@ -57,7 +57,6 @@ public class TelegramUserRepositoryIT {
     }
 
 
-
     @Sql(scripts = {"/sql/clearDbs.sql", "/sql/fiveGroupSubsForUser.sql"})
     @Test
     public void shouldProperlyGetAllGroupSubsForUser() {
@@ -73,5 +72,6 @@ public class TelegramUserRepositoryIT {
             Assertions.assertEquals(i + 1, groupSubs.get(i).getLastArticleId());
         }
     }
+
 
 
