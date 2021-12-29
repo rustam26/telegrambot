@@ -2,6 +2,7 @@ package com.github.rustam26.telegrambot.repository.entity;
 
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "tg_user")
+@EqualsAndHashCode(exclude =  "groupSubs")
 public class TelegramUser {
 
     @Id

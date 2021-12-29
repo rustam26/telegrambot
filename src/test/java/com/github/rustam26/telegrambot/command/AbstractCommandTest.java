@@ -28,6 +28,15 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
     abstract Command getCommand();
 
+    public static Update prepareUpdate(Long chatId, String commandName) {
+        Update update = new Update();
+        Message message = Mockito.mock(Message.class);
+        Mockito.when(message.getChatId()).thenReturn(chatId);
+        Mockito.when(message.getText()).thenReturn(commandName);
+        update.setMessage(message);
+        return update;
+    }
+
     @Test
     public void shouldProperlyExecuteCommand() throws TelegramApiException{
         Long chatId = 1234567824356L;
