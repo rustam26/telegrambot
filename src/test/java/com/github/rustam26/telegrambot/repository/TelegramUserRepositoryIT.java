@@ -1,7 +1,9 @@
 package com.github.rustam26.telegrambot.repository;
 
 
+
 import com.github.rustam26.telegrambot.repository.entity.GroupSub;
+
 import com.github.rustam26.telegrambot.repository.entity.TelegramUser;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -70,6 +72,6 @@ public class TelegramUserRepositoryIT {
             Assertions.assertEquals(i + 1, groupSubs.get(i).getLastArticleId());
         }
     }
-}
+
 
 

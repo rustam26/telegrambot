@@ -10,7 +10,9 @@
 	</parent>
 	<groupId>com.github.rustam26</groupId>
 	<artifactId>telegrambot</artifactId>
+
 	<version>0.6.0-SNAPSHOT</version>
+
 	<name>TelegramBot</name>
 	<description>Telegram bot Javarush</description>
 
@@ -19,6 +21,7 @@
 		<unirest.version>3.13.4</unirest.version>
 		<telegrambots.version>5.4.0.1</telegrambots.version>
 		<apache.commons.version>3.12.0</apache.commons.version>
+
 	</properties>
 
 	<dependencies>
@@ -64,6 +67,7 @@
             <scope>test</scope>
         </dependency>
 		<dependency>
+
 			<groupId>com.konghq</groupId>
 			<artifactId>unirest-java</artifactId>
 			<version>${unirest.version}</version>
@@ -73,10 +77,12 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>${apache.commons.version}</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-autoconfigure</artifactId>
 		</dependency>
+
 
 	</dependencies>
 

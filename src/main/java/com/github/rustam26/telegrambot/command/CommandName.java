@@ -14,6 +14,7 @@ public enum CommandName {
     LIST_GROUP_SUB("/listgroupsub"),
     DELETE_GROUP_SUB("/deletegroupsub");
 
+
     private final String commandName;
 
     CommandName(String commandName) {

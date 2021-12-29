@@ -22,6 +22,7 @@ public class CommandContainer {
     public CommandContainer(SendBotMessageService sendBotMessageService, TelegramUserService telegramUserService,
                             JavaRushGroupClient javaRushGroupClient, GroupSubService groupSubService) {
 
+
         commandMap = ImmutableMap.<String , Command> builder()
                 .put(START.getCommandName(), new StartCommand(sendBotMessageService, telegramUserService))
                 .put(STOP.getCommandName(), new StopCommand(sendBotMessageService, telegramUserService))
@@ -30,7 +31,9 @@ public class CommandContainer {
                 .put(STAT.getCommandName(),new StatCommand(sendBotMessageService, telegramUserService))
                 .put(ADD_GROUP_SUB.getCommandName(), new AddGroupSubCommand(sendBotMessageService, javaRushGroupClient, groupSubService))
                 .put(LIST_GROUP_SUB.getCommandName(), new ListGroupSubCommand(sendBotMessageService, telegramUserService))
+
                 .put(DELETE_GROUP_SUB.getCommandName(), new DeleteGroupSubCommand(sendBotMessageService, groupSubService,telegramUserService))
+
                 .build();
 
         unknownCommand = new UnknownCommand(sendBotMessageService);
