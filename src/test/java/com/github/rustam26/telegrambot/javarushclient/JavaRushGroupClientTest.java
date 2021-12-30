@@ -15,7 +15,7 @@ import static com.github.rustam26.telegrambot.javarushclient.dto.GroupInfoType.T
 
 @DisplayName("Integration-level testing for JavaRushGroupClientImplTest")
  class JavaRushGroupClientTest {
-
+    public static final String JAVARUSH_API_PATH = "https://javarush.ru/api/1.0/rest";
     private  final JavaRushGroupClient groupClient = new JavaRushGroupClientImpl("https://javarush.ru/api/1.0/rest");
 
     @Test

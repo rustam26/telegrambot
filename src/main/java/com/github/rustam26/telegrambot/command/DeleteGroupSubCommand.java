@@ -9,7 +9,6 @@ import org.springframework.util.CollectionUtils;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
 import javax.ws.rs.NotFoundException;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -55,35 +54,38 @@ public class DeleteGroupSubCommand implements Command{
                 sendBotMessageService.sendMessage(chatId, format ("Удалил подписку на группу: %s", groupSub.getTitle()));
 
             }else {
+
                 sendBotMessageService.sendMessage(chatId, "Не нашел такой группы =/");
+
             }
         }else {
+
             sendBotMessageService.sendMessage(chatId, "неправильный формат ID группы.\n " +
                     "ID должно быть целым положительным числом");
-        }
 
+        }
     }
 
 
-    private void sendGroupIdList(String chatId){
+    private void sendGroupIdList(String chatId) {
         String message;
         List<GroupSub> groupSubs = telegramUserService.findByChatId(chatId)
                 .orElseThrow(NotFoundException::new)
                 .getGroupSubs();
-
-        if (CollectionUtils.isEmpty(groupSubs)){
+        if (CollectionUtils.isEmpty(groupSubs)) {
             message = "Пока нет подписок на группы. Чтобы добавить подписку напиши /addGroupSub";
         } else {
-            message = "Чтобы удалить подписку на группу - передай комадну вместе с ID группы. \n" +
+            String userGroupSubData = groupSubs.stream()
+                    .map(group -> format("%s - %s \n", group.getTitle(), group.getId()))
+                    .collect(Collectors.joining());
+
+            message = String.format("Чтобы удалить подписку на группу - передай комадну вместе с ID группы. \n" +
                     "Например: /deleteGroupSub 16 \n\n" +
                     "я подготовил список всех групп, на которые ты подписан) \n\n" +
                     "имя группы - ID группы \n\n" +
-                    "%s";
+                    "%s", userGroupSubData);
         }
-        String userGroupSubData = groupSubs.stream()
-                .map(group ->  format("%s - %s \n", group.getTitle(), group.getId()))
-                .collect(Collectors.joining());
 
-        sendBotMessageService.sendMessage(chatId, format(message , userGroupSubData));
+        sendBotMessageService.sendMessage(chatId, message);
     }
 }

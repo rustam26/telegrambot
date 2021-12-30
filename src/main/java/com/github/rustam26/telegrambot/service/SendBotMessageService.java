@@ -1,5 +1,7 @@
 package com.github.rustam26.telegrambot.service;
 
+import java.util.List;
+
 /**
  *  Service for sending messages via telegram-bot.
  */
@@ -15,5 +17,6 @@ public interface SendBotMessageService {
      */
 
     void sendMessage(String chatId, String message);
+    void sendMessage(String chatId, List<String> messages);
 
 }

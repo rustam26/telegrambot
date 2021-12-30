@@ -28,10 +28,10 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
     abstract Command getCommand();
 
-    public static Update prepareUpdate(Long chatId, String commandName) {
+    public static Update prepareUpdate(String chatId, String commandName) {
         Update update = new Update();
         Message message = Mockito.mock(Message.class);
-        Mockito.when(message.getChatId()).thenReturn(chatId);
+        Mockito.when(message.getChatId()).thenReturn(Long.valueOf(chatId));
         Mockito.when(message.getText()).thenReturn(commandName);
         update.setMessage(message);
         return update;
@@ -39,16 +39,16 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
     @Test
     public void shouldProperlyExecuteCommand() throws TelegramApiException{
-        Long chatId = 1234567824356L;
+        String chatId = "1234567824356";
 
         Update update = new Update();
         Message message = Mockito.mock(Message.class);
-        Mockito.when(message.getChatId()).thenReturn(chatId);
+        Mockito.when(message.getChatId()).thenReturn(Long.valueOf(chatId));
         Mockito.when(message.getText()).thenReturn(getCommandName());
         update.setMessage(message);
 
         SendMessage sendMessage = new SendMessage();
-        sendMessage.setChatId(chatId.toString());
+        sendMessage.setChatId(chatId);
         sendMessage.setText(getCommandMessage());
         sendMessage.enableHtml(true);
 
