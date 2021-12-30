@@ -23,21 +23,22 @@ public class GroupRequestArgs {
 
 
     public Map<String ,Object> populateQueries(){
+
         Map <String, Object>queries = new HashMap<>();
 
-        if (nonNull(query)){
+        if (nonNull(query)) {
             queries.put("query", query);
         }
-        if (nonNull(type)){
+        if (nonNull(type)) {
             queries.put("type", type);
         }
-        if (nonNull(filter)){
+        if (nonNull(filter)) {
             queries.put("filter", filter);
         }
-        if (nonNull(offset)){
+        if (nonNull(offset)) {
             queries.put("offset", offset);
         }
-        if (nonNull(limit)){
+        if (nonNull(limit)) {
             queries.put("limit", limit);
         }
         return queries;

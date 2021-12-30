@@ -31,9 +31,9 @@ public class TelegramUserRepositoryIT {
     @Autowired
     private TelegramUserRepository telegramUserRepository;
 
-    @Sql(scripts =  {"/sql/clearDbs.sql", "/sql/telegram_users.sql"})
+    @Sql(scripts = {"/sql/clearDbs.sql", "/sql/telegram_users.sql"})
     @Test
-    public void shouldProperlyFindAllActiveUsers(){
+    public void shouldProperlyFindAllActiveUsers() {
         List<TelegramUser> users = telegramUserRepository.findAllByActiveTrue();
 
         Assertions.assertEquals(5, users.size());
@@ -42,7 +42,7 @@ public class TelegramUserRepositoryIT {
 
     @Sql(scripts = {"/sql/clearDbs.sql"})
     @Test
-    public void shouldProperlySaveTelegramUser(){
+    public void shouldProperlySaveTelegramUser() {
 
         TelegramUser telegramUser = new TelegramUser();
         telegramUser.setChatId("1234567890");
@@ -61,7 +61,7 @@ public class TelegramUserRepositoryIT {
     @Test
     public void shouldProperlyGetAllGroupSubsForUser() {
         //when
-        Optional<TelegramUser> userFromDB = telegramUserRepository.findById("1");
+        Optional<TelegramUser> userFromDB = telegramUserRepository.findById("1L");
 
         //then
         Assertions.assertTrue(userFromDB.isPresent());
@@ -72,6 +72,7 @@ public class TelegramUserRepositoryIT {
             Assertions.assertEquals(i + 1, groupSubs.get(i).getLastArticleId());
         }
     }
+}
 
 
 

@@ -19,7 +19,7 @@ public class GroupInfo {
     private String title;
     private GroupInfoType type;
     private Integer userCount;
-    private GroupVisibilityStatus groupVisibilityStatus;
+    private GroupVisibilityStatus visibilityStatus;
 
 
 }

@@ -2,6 +2,7 @@ package com.github.rustam26.telegrambot.service;
 
 
 
+import com.github.rustam26.telegrambot.javarushclient.JavaRushGroupClient;
 import com.github.rustam26.telegrambot.javarushclient.dto.GroupDiscussionInfo;
 import com.github.rustam26.telegrambot.repository.GroupSubRepository;
 import com.github.rustam26.telegrambot.repository.entity.GroupSub;
@@ -20,6 +21,7 @@ public class GroupSubServiceTest {
     private GroupSubService groupSubService;
     private GroupSubRepository groupSubRepository;
     private TelegramUser newUser;
+    private JavaRushGroupClient javaRushGroupClient;
 
 
     private final  static String CHAT_ID = "1";
@@ -27,9 +29,11 @@ public class GroupSubServiceTest {
     @BeforeEach
     public void init(){
 
+
         TelegramUserService telegramUserService = Mockito.mock(TelegramUserService.class);
+        javaRushGroupClient = Mockito.mock(JavaRushGroupClient.class);
         groupSubRepository = Mockito.mock(GroupSubRepository.class);
-        groupSubService = new GroupSubServiceImpl(groupSubRepository, telegramUserService);
+        groupSubService = new GroupSubServiceImpl(groupSubRepository, telegramUserService,javaRushGroupClient);
 
         newUser = new TelegramUser();
         newUser.setActive(true);
