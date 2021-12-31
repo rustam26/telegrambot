@@ -4,6 +4,7 @@ import com.github.rustam26.telegrambot.command.CommandContainer;
 import com.github.rustam26.telegrambot.javarushclient.JavaRushGroupClient;
 import com.github.rustam26.telegrambot.service.GroupSubService;
 import com.github.rustam26.telegrambot.service.SendBotMessageServiceImpl;
+import com.github.rustam26.telegrambot.service.StatisticsService;
 import com.github.rustam26.telegrambot.service.TelegramUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,6 +13,8 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.springframework.context.annotation.Profile;
 
+
+import java.util.List;
 
 import static com.github.rustam26.telegrambot.command.CommandName.NO;
 
@@ -28,8 +31,11 @@ public class TelegramBot extends TelegramLongPollingBot {
     private final CommandContainer commandContainer;
 
     @Autowired
-    public TelegramBot(TelegramUserService telegramUserService, JavaRushGroupClient javaRushGroupClient, GroupSubService groupSubService) {
-        this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this), telegramUserService,javaRushGroupClient,groupSubService);
+    public TelegramBot(TelegramUserService telegramUserService, JavaRushGroupClient javaRushGroupClient,
+                       GroupSubService groupSubService, @Value("#{'${bot.admins}'.split(',')}") List<String> admins, StatisticsService statisticsService) {
+        this.commandContainer =
+                new CommandContainer(new SendBotMessageServiceImpl(this),
+                        telegramUserService,javaRushGroupClient,groupSubService, admins, statisticsService);
 
     }
 
@@ -38,11 +44,12 @@ public class TelegramBot extends TelegramLongPollingBot {
 
         if (update.hasMessage() && update.getMessage().hasText()){
             String message =  update.getMessage().getText().trim();
+            String username = update.getMessage().getFrom().getUserName();
             if (message.startsWith(COMMAND_PREFIX)){
                 String commandIdentifier = message.split(" ")[0].toLowerCase();
-                commandContainer.retrieveCommand(commandIdentifier).execute(update);
+                commandContainer.retrieveCommand(commandIdentifier, username).execute(update);
             } else {
-                commandContainer.retrieveCommand(NO.getCommandName()).execute(update);
+                commandContainer.retrieveCommand(NO.getCommandName(), username).execute(update);
             }
 
         }
