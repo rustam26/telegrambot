@@ -33,7 +33,7 @@ public class StatCommandTest {
     @Test
     public void shouldProperlySendMessage() {
         //given
-        String chatId = "1234567";
+        long chatId = 1234567;
         GroupStatDTO groupDto = new GroupStatDTO(1, "group", 1);
         StatisticDTO statisticDTO = new StatisticDTO(1, 1, Collections.singletonList(groupDto), 2.5);
         Mockito.when(statisticsService.countBotStatistic())

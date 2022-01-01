@@ -40,7 +40,7 @@ class DeleteGroupSubCommandTest {
     @Test
     public void shouldProperlyReturnEmptySubscriptionList() {
         //given
-        String chatId = "23456";
+        Long chatId = 23456L;
         Update update = prepareUpdate(chatId, DELETE_GROUP_SUB.getCommandName());
 
         Mockito.when(telegramUserService.findByChatId(chatId))
@@ -58,7 +58,7 @@ class DeleteGroupSubCommandTest {
     @Test
     public void shouldProperlyReturnSubscriptionLit() {
         //given
-        String chatId = "23456";
+        Long chatId = 23456L;
         Update update = prepareUpdate(chatId, DELETE_GROUP_SUB.getCommandName());
         TelegramUser telegramUser = new TelegramUser();
         GroupSub gs1 = new GroupSub();
@@ -84,7 +84,7 @@ class DeleteGroupSubCommandTest {
     @Test
     public void shouldRejectByInvalidGroupId() {
         //given
-        String chatId = "23456";
+        Long chatId = 23456L;
         Update update = prepareUpdate(chatId, String.format("%s %s", DELETE_GROUP_SUB.getCommandName(), "groupSubId"));
         TelegramUser telegramUser = new TelegramUser();
         GroupSub gs1 = new GroupSub();
@@ -109,7 +109,7 @@ class DeleteGroupSubCommandTest {
         //given
 
         /// prepare update object
-        String chatId = "23456";
+        Long chatId = 23456L;
         Integer groupId = 1234;
         Update update = prepareUpdate(chatId, String.format("%s %s", DELETE_GROUP_SUB.getCommandName(), groupId));
 
@@ -141,7 +141,7 @@ class DeleteGroupSubCommandTest {
     @Test
     public void shouldDoesNotExistByGroupId() {
         //given
-        String chatId = "23456";
+        long chatId = 23456;
         Integer groupId = 1234;
         Update update = prepareUpdate(chatId, String.format("%s %s", DELETE_GROUP_SUB.getCommandName(), groupId));
 

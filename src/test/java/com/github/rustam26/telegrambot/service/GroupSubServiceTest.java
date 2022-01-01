@@ -24,7 +24,7 @@ public class GroupSubServiceTest {
     private JavaRushGroupClient javaRushGroupClient;
 
 
-    private final  static String CHAT_ID = "1";
+    private final  static long CHAT_ID = 1;
 
     @BeforeEach
     public void init(){
@@ -66,7 +66,7 @@ public class GroupSubServiceTest {
     public void shouldProperlyAddUserToExistingGroup() {
         //given
         TelegramUser oldTelegramUser = new TelegramUser();
-        oldTelegramUser.setChatId("2");
+        oldTelegramUser.setChatId(2L);
         oldTelegramUser.setActive(true);
 
         GroupDiscussionInfo groupDiscussionInfo = new GroupDiscussionInfo();
