@@ -1,10 +1,5 @@
 package com.github.rustam26.telegrambot.command;
 
-import com.github.rustam26.telegrambot.command.Command;
-import com.github.rustam26.telegrambot.command.CommandContainer;
-import com.github.rustam26.telegrambot.command.CommandName;
-import com.github.rustam26.telegrambot.command.UnknownCommand;
-
 import com.github.rustam26.telegrambot.javarushclient.JavaRushGroupClient;
 import com.github.rustam26.telegrambot.service.GroupSubService;
 
@@ -45,7 +40,7 @@ public class CommandContainerTest {
     public void shouldGetAllTheExistingCommands(){
         Arrays.stream(CommandName.values())
                 .forEach(commandName -> {
-                    Command command = commandContainer.retrieveCommand(commandName.getCommandName(),"username");
+                    Command command = commandContainer.findCommand(commandName.getCommandName(),"username");
                     Assertions.assertNotEquals(UnknownCommand.class, command.getClass());
                 });
     }
@@ -54,7 +49,7 @@ public class CommandContainerTest {
     public void shouldReturnUnknownCommand(){
         String unknownCommand = "/lfdglkfg";
 
-        Command command = commandContainer.retrieveCommand(unknownCommand,"username");
+        Command command = commandContainer.findCommand(unknownCommand,"username");
 
         Assertions.assertEquals(UnknownCommand.class , command.getClass());
     }

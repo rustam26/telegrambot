@@ -16,7 +16,7 @@ public interface SendBotMessageService {
      * @param message provided message to by sent.
      */
 
-    void sendMessage(String chatId, String message);
-    void sendMessage(String chatId, List<String> messages);
+    void sendMessage(Long chatId, String message);
+    void sendMessage(Long chatId, List<String> messages);
 
 }
